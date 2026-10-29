@@ -4,6 +4,7 @@ import dev.tejas.productservice.dtos.CreateProductRequestDTO;
 import dev.tejas.productservice.exceptions.ProductNotFoundException;
 import dev.tejas.productservice.models.Product;
 import dev.tejas.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,7 +16,7 @@ public class ProductController {
     private final ProductService productService;
     private final RestTemplate restTemplate;
 
-    public ProductController(ProductService productService, RestTemplate restTemplate) {
+    public ProductController(@Qualifier("selfProductService") ProductService productService, RestTemplate restTemplate) {
         this.productService = productService;
         this.restTemplate = restTemplate;
     }
